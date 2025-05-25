@@ -22,40 +22,6 @@ return {
     vim.keymap.set('n', '<leader>ce', ':Copilot enable<CR>', { desc = '[E]nable Copilot' }),
   },
 
-  { -- Telescope custom options
-    'nvim-telescope/telescope.nvim',
-    pickers = {
-      find_files = {
-        hidden = true,
-        cwd_only = true,
-      },
-      buffers = {
-        theme = 'dropdown',
-        initial_mode = 'normal',
-      },
-    },
-  },
-
-  { -- Add prettier to JavaScript and TypeScript files
-    'stevearc/conform.nvim',
-    opts = {
-      formatters_by_ft = {
-        lua = { 'stylua' },
-        javascript = { 'prettierd', 'prettier', stop_after_first = true },
-        typescript = { 'prettierd', 'prettier', stop_after_first = true },
-      },
-    },
-  },
-
-  { -- Neovim Theme
-    'ellisonleao/gruvbox.nvim',
-    priority = 1000,
-    config = function()
-      vim.o.background = 'dark'
-      vim.cmd [[colorscheme gruvbox]]
-    end,
-  },
-
   { -- Neotree
     'nvim-neo-tree/neo-tree.nvim',
     branch = 'v3.x',
@@ -93,32 +59,32 @@ return {
             enable = true,
             lookahead = true,
             keymaps = {
-              ['af'] = '@function.outer',
-              ['if'] = '@function.inner',
-              ['ac'] = '@class.outer',
-              ['ic'] = '@class.inner',
-              ['ai'] = '@conditional.outer',
-              ['ii'] = '@conditional.inner',
-              ['al'] = '@loop.outer',
-              ['il'] = '@loop.inner',
+              ['af'] = { query = '@function.outer', desc = 'Select outer function' },
+              ['if'] = { query = '@function.inner', desc = 'Select inner function' },
+              ['ac'] = { query = '@class.outer', desc = 'Select outer class' },
+              ['ic'] = { query = '@class.inner', desc = 'Select inner class' },
+              ['ai'] = { query = '@conditional.outer', desc = 'Select outer conditional' },
+              ['ii'] = { query = '@conditional.inner', desc = 'Select inner conditional' },
+              ['al'] = { query = '@loop.outer', desc = 'Select outer loop' },
+              ['il'] = { query = '@loop.inner', desc = 'Select inner loop' },
             },
           },
           move = {
             enable = true,
             set_jumps = true,
             goto_next_start = {
-              [']m'] = '@function.outer',
-              [']f'] = '@function.outer',
-              [']c'] = '@class.outer',
-              [']i'] = '@conditional.outer',
-              [']l'] = '@loop.outer',
+              [']m'] = { query = '@function.outer', desc = 'Next outer method' },
+              [']f'] = { query = '@function.outer', desc = 'Next outer function' },
+              [']c'] = { query = '@class.outer', desc = 'Next outer class' },
+              [']i'] = { query = '@conditional.outer', desc = 'Next outer conditional' },
+              [']l'] = { query = '@loop.outer', desc = 'Next outer loop' },
             },
             goto_previous_start = {
-              ['[m'] = '@function.outer',
-              ['[f'] = '@function.outer',
-              ['[c'] = '@class.outer',
-              ['[i'] = '@conditional.outer',
-              ['[l'] = '@loop.outer',
+              ['[m'] = { query = '@function.outer', desc = 'Previous outer method' },
+              ['[f'] = { query = '@function.outer', desc = 'Previous outer function' },
+              ['[c'] = { query = '@class.outer', desc = 'Previous outer class' },
+              ['[i'] = { query = '@conditional.outer', desc = 'Previous outer conditional' },
+              ['[l'] = { query = '@loop.outer', desc = 'Previous outer loop' },
             },
           },
         },
